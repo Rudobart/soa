@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <h:outputStylesheet library="css" name="table-style.css"  />
+</h:head>
+<h:body>
+    <h:form>
+      <h:dataTable value="#{ksiazkiBean.listaKsiazek}" var="k" styleClass="order-table"
+                   headerClass="order-table-header"
+                   rowClasses="order-table-odd-row,order-table-even-row"  >
+
+          <h:column>
+              <f:facet name="header">ID</f:facet>
+              #{k.id}
+          </h:column>
+         <h:column>
+            <!-- column header -->
+            <f:facet name="header">Tytul</f:facet>
+            <!-- row record -->
+            #{k.tytul}
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Autor</f:facet>
+            #{k.autor}
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Typ</f:facet>
+            #{k.typ}
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Cena</f:facet>
+            #{k.cena}
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Waluta</f:facet>
+            #{k.waluta}
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Ilosc Stron</f:facet>
+            #{k.strony}
+         </h:column>
+
+         <h:column>
+            <f:facet name="header">Usuń</f:facet>
+            <h:commandButton action="#{ksiazkiBean.usunKsiazke(k.id)}" />
+         </h:column>
+
+          <h:column>
+              <f:facet name="header">Zmień</f:facet>
+              <h:commandButton action="#{ksiazkiBean.zmienKsiazke(k.id)}" />
+          </h:column>
+
+
+
+      </h:dataTable>
+
+
+      <br/>
+        Dodaj książke: <br/>
+      <h:panelGrid columns="2">
+         <h:outputLabel value = "Tytuł:" />
+         <h:inputText value = "#{ksiazkiBean.nowyTytul}" />
+      </h:panelGrid>
+      <h:panelGrid columns="2">
+         <h:outputLabel value = "Autor:" />
+         <h:inputText value = "#{ksiazkiBean.nowyAutor}" />
+      </h:panelGrid>
+      <h:panelGrid columns="2">
+         <h:outputLabel value = "Typ:" />
+         <h:inputText value = "#{ksiazkiBean.nowyTyp}" />
+      </h:panelGrid>
+      <h:panelGrid columns="2">
+         <h:outputLabel value = "Cena:" />
+         <h:inputText value = "#{ksiazkiBean.nowaCena   }" />
+      </h:panelGrid>
+      <h:panelGrid columns="2">
+         <h:outputLabel value = "Waluta:" />
+         <h:inputText value = "#{ksiazkiBean.nowaWaluta}" />
+      </h:panelGrid>
+      <h:panelGrid columns="2">
+         <h:outputLabel value = "Ilosc stron:" />
+         <h:inputText value = "#{ksiazkiBean.noweStrony}" />
+      </h:panelGrid>
+        <h:commandButton value="Dodaj do bazy" action="#{ksiazkiBean.dodajDoBazy()}" />
+        <br/>
+        Zmień książke: <br/>
+        <h:panelGrid columns="2">
+            <h:outputLabel value = "Tytuł:" />
+            <h:inputText value = "#{ksiazkiBean.zmienionyTytul}" />
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:outputLabel value = "Autor:" />
+            <h:inputText value = "#{ksiazkiBean.zmienionyAutor}" />
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:outputLabel value = "Typ:" />
+            <h:inputText value = "#{ksiazkiBean.zmienionyTyp}" />
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:outputLabel value = "Cena:" />
+            <h:inputText value = "#{ksiazkiBean.zmienionaCena}" />
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:outputLabel value = "Waluta:" />
+            <h:inputText value = "#{ksiazkiBean.zmienionaWaluta}" />
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:outputLabel value = "Ilosc stron:" />
+            <h:inputText value = "#{ksiazkiBean.zmienioneStrony}" />
+        </h:panelGrid>
+
+
+      <br/>
+
+
+
+   </h:form>
+
+
+
+</h:body>
+</html>
+

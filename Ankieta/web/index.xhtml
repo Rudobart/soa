@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<HTML lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <meta charset="UTF-8"/>
+   <title>Sklep odzieżowy</title>
+</h:head>
+<h:body>
+   <h1>Ankieta</h1>
+   <h:form id="formularz_ankieta">
+
+      Imie
+      <h:inputText value="#{sklep.klient.czlowiek.imie}" required="true" id="name"/>
+      <h:message for="name"/>
+      <br/>
+
+      Email
+      <h:inputText id="email" value="#{sklep.klient.czlowiek.email}" required="true">
+         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+      </h:inputText>
+      <h:message for="email"/>
+      <br/>
+
+      Wiek
+      <h:inputText value="#{sklep.klient.czlowiek.wiek}"/>
+      <br/>
+
+      Plec
+      <p:selectOneMenu value="#{sklep.klient.czlowiek.plec}">
+         <f:selectItems value="#{sklep.plci}"/>
+         <p:ajax update=":formularz_ankieta:wybranaPlec"/>
+      </p:selectOneMenu>
+      <br/>
+
+      Edukacja
+      <h:inputText value="#{sklep.klient.czlowiek.edukacja}"/>
+      <br/>
+
+      Wzrost
+      <h:inputText value="#{sklep.klient.czlowiek.wzrost}"/>
+      <br/>
+
+      <h:panelGroup id="wybranaPlec">
+
+         <h:panelGroup id="women" rendered="#{sklep.klient.czlowiek.plec eq 'F'}">
+
+            obwód biustu
+            <h:inputText value="#{sklep.klient.kobieta.biust}"/><br/>
+            wielkość miseczki
+            <h:inputText value="#{sklep.klient.kobieta.miseczka}"/><br/>
+            talia
+            <h:inputText value="#{sklep.klient.kobieta.talia}"/><br/>
+            biodra
+            <h:inputText value="#{sklep.klient.kobieta.biodro}"/><br/>
+
+         </h:panelGroup>
+
+         <h:panelGroup id="men" rendered="#{sklep.klient.czlowiek.plec eq 'M'}">
+
+            chestCircumference
+            <h:inputText value="#{sklep.klient.facet.klatka}"/><br/>
+            waistCircumference
+            <h:inputText value="#{sklep.klient.facet.pas}"/><br/>
+
+         </h:panelGroup>
+
+      </h:panelGroup>
+
+      <h:commandButton value="submit" action="#{sklep.przejdzDalej}"/>
+   </h:form>
+
+
+   <h:form rendered="#{sklep.dalej}">
+      Miesięczne wydatki:
+      <h:selectOneMenu value="#{sklep.klient.wyniki.wydatki}">
+         <f:selectItem itemValue="0-100 zł"/>
+         <f:selectItem itemValue="100-500zł"/>
+         <f:selectItem itemValue="500-1000zł"/>
+         <f:selectItem itemValue=">1000zł"/>
+      </h:selectOneMenu>
+      <br/>
+
+      Jak często chodzisz na zakupy:
+      <h:selectOneMenu value="#{sklep.klient.wyniki.freq}">
+         <f:selectItem itemValue="Codziennie"/>
+         <f:selectItem itemValue="Raz w tygodniu"/>
+         <f:selectItem itemValue="Raz w miesiącu"/>
+         <f:selectItem itemValue="Kilka razy w roku"/>
+      </h:selectOneMenu>
+      <br/>
+
+      W jakich chodzisz kolorach:
+      <h:selectManyCheckbox value="#{sklep.klient.wyniki.kolory}">
+         <f:selectItem itemValue="Kolorowo-jaskrawych"/>
+         <f:selectItem itemValue="Stonowanych szarościach"/>
+         <f:selectItem itemValue="W czerni i bieli"/>
+         <f:selectItem itemValue="W samej czerni"/>
+      </h:selectManyCheckbox>
+      <br/>
+
+      Preferencje
+      <h:selectManyCheckbox value="#{sklep.klient.preferencje}"
+                            rendered="#{sklep.klient.czlowiek.plec eq 'F'}">
+         <f:selectItem itemValue="Garsonki"/>
+         <f:selectItem itemValue="Bluzki"/>
+         <f:selectItem itemValue="Spódniczki"/>
+         <f:selectItem itemValue="Spodnie"/>
+      </h:selectManyCheckbox>
+
+      <h:selectManyCheckbox value="#{sklep.klient.preferencje}"
+                            rendered="#{sklep.klient.czlowiek.plec eq 'M'}">
+         <f:selectItem itemValue="Spodnie"/>
+         <f:selectItem itemValue="Spodenki"/>
+         <f:selectItem itemValue="Garnitury"/>
+         <f:selectItem itemValue="Koszule"/>
+         <f:selectItem itemValue="Krawaty"/>
+      </h:selectManyCheckbox>
+      <br/>
+
+      <h:commandButton value="submit" action="podsumowanie"/>
+   </h:form>
+
+   <h:form>
+      <h1>Reklama</h1>
+      <h:commandLink action="#{reklama.licz}">
+         <h:graphicImage value="#{reklama.reklamy}" height="200"/>
+      </h:commandLink>
+      <br/>
+      <h:outputLabel value="Licznik: "/>
+      <h:outputLabel value="#{reklama.licznik}"/><br/>
+   </h:form>
+</h:body>
+</HTML>

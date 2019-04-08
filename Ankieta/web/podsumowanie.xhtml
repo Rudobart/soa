@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<HTML lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+  <meta charset="UTF-8"/>
+  <title>Podsumowanie</title>
+</h:head>
+<h:body>
+
+  <h1>Podsumowanie</h1>
+
+  Imie : <h:outputText value="#{sklep.klient.czlowiek.imie}"/><br/>
+  Email: <h:outputText value="#{sklep.klient.czlowiek.email}"/><br/>
+  Wiek : <h:outputText value="#{sklep.klient.czlowiek.wiek}"/><br/>
+  Plec : <h:outputText value="#{sklep.klient.czlowiek.plec}"/><br/>
+  Wyksztalcenie : <h:outputText value="#{sklep.klient.czlowiek.edukacja}"/><br/>
+  Wzrost : <h:outputText value="#{sklep.klient.czlowiek.wzrost}"/><br/>
+
+  <br/>
+  <h:panelGroup rendered="#{sklep.klient.czlowiek.plec eq 'M'}">
+    Klatka: <h:outputText value="#{sklep.klient.facet.klatka}"/><br/>
+    Pas: <h:outputText value="#{sklep.klient.facet.pas}"/><br/>
+  </h:panelGroup>
+
+  <h:panelGroup id="women" rendered="#{sklep.klient.czlowiek.plec eq 'F'}">
+    Obwód biustu:<h:outputText value="#{sklep.klient.kobieta.biust}"/><br/>
+    Wielkosc miseczki:<h:outputText value="#{sklep.klient.kobieta.miseczka}"/><br/>
+    Talia:<h:outputText value="#{sklep.klient.kobieta.talia}"/><br/>
+    Biodra:<h:outputText value="#{sklep.klient.kobieta.biodro}"/><br/>
+  </h:panelGroup>
+
+  <br/>
+  Miesięczne wydatki <h:outputText value="#{sklep.klient.wyniki.wydatki}"/><br/>
+  Jak czesto chodzisz na zakupy <h:outputText value="#{sklep.klient.wyniki.freq}"/><br/>
+  Jakie kolory <h:outputText value="#{sklep.klient.wyniki.kolory}"/><br/>
+  Preferencje <h:outputText value="#{sklep.klient.preferencje}"/><br/>
+
+  <h:form>
+    <h1>Reklama</h1>
+    <h:commandLink action="#{reklama.licz}">
+      <h:graphicImage value="#{reklama.reklamy}" height="200"/>
+    </h:commandLink>
+    <h:outputLabel value="Licznik: "/>
+    <h:outputLabel value="#{reklama.licznik}"/><br/>
+  </h:form>
+</h:body>
+</HTML>

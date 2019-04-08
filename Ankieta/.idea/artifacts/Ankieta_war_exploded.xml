@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="Ankieta:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Ankieta_war_exploded.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Ankieta/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Ankieta" />
+        </element>
+        <element id="library" level="project" name="PrimeFaces-6.1" />
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/primefaces-6.1.jar" />
+          <element id="library" level="project" name="org.projectlombok:lombok:1.18.6" />
+          <element id="library" level="project" name="Mojarra-2.4.0" />
+        </element>
+      </element>
+      <element id="library" level="project" name="PrimeFaces-6.1" />
+      <element id="library" level="project" name="org.projectlombok:lombok:1.18.6" />
+    </root>
+  </artifact>
+</component>
