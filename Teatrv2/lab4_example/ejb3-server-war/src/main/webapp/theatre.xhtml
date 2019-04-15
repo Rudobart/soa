@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head></h:head>
+<h:body>
+    <h:form>
+
+
+
+        <p:outputLabel for="seatType" value="Rodzaj miejsca:" />
+        <p:selectOneListbox id="seatType" value="#{reservationView.selectedType}" >
+            <f:selectItem itemLabel="Normalny" itemValue="Normalny" />
+            <f:selectItem itemLabel="VIP" itemValue="VIP" />
+        </p:selectOneListbox>
+        <p:ajax event="click" update="available sum seats"/>
+        <br/>
+
+        <p:outputLabel for="available">Ilość dostępnych miejsc: </p:outputLabel>
+        <p:outputLabel id="available" value="#{reservationView.seatAvailabilityChecker.showNumberOfAvailableByType(reservationView.selectedType)}"/><br/>
+        <br/>
+
+        <p:outputLabel for="seats">Numery dostępnych miejsc: </p:outputLabel>
+        <p:selectOneListbox id="seats" value="#{reservationView.seatId}" var="t" >
+            <f:selectItems value="#{reservationView.seatAvailabilityChecker.showAvailableSeats(reservationView.selectedType)}" var="seat" itemValue="#{seat}" />
+            <p:column>
+                <h:outputText value="#{t}" />
+            </p:column>
+            <p:ajax event="click" update="selected"/>
+        </p:selectOneListbox>
+        <br/>
+
+        <p:outputLabel for="selected">Wybrane miejce: </p:outputLabel>
+        <p:outputLabel id="selected" value="Rodzaj: #{reservationView.selectedType}, Miejsce: #{reservationView.seatId}"/><br/>
+
+
+        <p:outputLabel for="sum">Koszt: </p:outputLabel>
+        <p:outputLabel id="sum" value="#{reservationView.theatre.getSeatPriceByType(reservationView.selectedType)} zł"/><br/>
+
+
+
+
+        <p:commandButton value="Kup bilet" update="@form"  action="#{reservationView.theatreBooker.bookSeat(reservationView.seatId)}">
+        </p:commandButton>
+        <br/>
+
+        <p:outputLabel for="balance">Twoje pieniądze: </p:outputLabel>
+        <p:outputLabel id="balance" value="#{reservationView.theatreBooker.money} zł"/><br/>
+
+
+        <p:outputLabel for="balance">Kupione bilety: </p:outputLabel>
+        <p:dataTable id = "tickets"  value="#{reservationView.theatreBooker.getTickets()}" var="ticketEntry">
+            <p:column headerText="Numer">
+                <h:outputText value="#{ticketEntry.key}" />
+            </p:column>
+            <p:column headerText="Rodzaj">
+                <h:outputText value="#{ticketEntry.value}" />
+            </p:column>
+        </p:dataTable>
+
+
+        <br/>
+
+
+    </h:form>
+</h:body>
+</html>
