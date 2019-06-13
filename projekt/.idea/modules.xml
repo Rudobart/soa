@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mobile-device-notifier-mock/mobile-device-notifier-mock.iml" filepath="$PROJECT_DIR$/mobile-device-notifier-mock/mobile-device-notifier-mock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parking-area-service/parking-area-service.iml" filepath="$PROJECT_DIR$/parking-area-service/parking-area-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parking-meter-mock/parking-meter-mock.iml" filepath="$PROJECT_DIR$/parking-meter-mock/parking-meter-mock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parking-place-mock/parking-place-mock.iml" filepath="$PROJECT_DIR$/parking-place-mock/parking-place-mock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projekt.iml" filepath="$PROJECT_DIR$/projekt.iml" />
+    </modules>
+  </component>
+</project>

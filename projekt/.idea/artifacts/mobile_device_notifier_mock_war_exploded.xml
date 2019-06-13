@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mobile-device-notifier-mock:war exploded">
+    <output-path>$PROJECT_DIR$/mobile-device-notifier-mock/target/mobile-device-notifier-mock</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>mobile-device-notifier-mock</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mobile-device-notifier-mock" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.1" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
+          <element id="library" level="project" name="Maven: javax:javaee-api:7.0" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.0" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/mobile-device-notifier-mock/target/mobile-device-notifier-mock/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="mobile-device-notifier-mock/web/Web" />
+    </root>
+  </artifact>
+</component>

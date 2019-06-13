@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <ui:include src="unauthenticated.xhtml"/>
+    <ui:fragment rendered="#{securityBean.isAuthenticated()}">
+        <h:form>
+            <p:poll interval="5" update="panel"/>
+        </h:form>
+        <p:outputPanel id="panel">
+        <p:dataTable value="#{dashboardBean.getParkingPlaces()}" var="d">
+            <p:column headerText="ID">
+                <h:outputText value="#{d.id}" />
+            </p:column>
+            <p:column headerText="#{languageBean.isPolish() ? 'Strefa' : 'Area'}">
+                <h:outputText value="#{d.street.area.name}" />
+            </p:column>
+            <p:column headerText="#{languageBean.isPolish() ? 'Ulica' : 'Street'}">
+                <h:outputText value="#{d.street.name}" />
+            </p:column>
+            <p:column headerText="#{languageBean.isPolish() ? 'Zajęte' : 'Taken'}">
+                <h:outputText value="#{d.occupied eq false and languageBean.isPolish() ? 'nie' :
+                d.occupied eq true and languageBean.isPolish() ? 'tak' :
+                d.occupied eq false and !languageBean.isPolish() ? 'no' :
+                'yes'
+                }" />
+            </p:column>
+            <p:column headerText="#{languageBean.isPolish() ? 'Data wygaśnięcia' : 'Expiration date'}">
+                <h:outputText value="#{dashboardBean.getFormattedTime(d.ticket.expirationTime)
+                eq 'No ticket' and languageBean.isPolish() ? 'Brak biletu':
+                dashboardBean.getFormattedTime(d.ticket.expirationTime)
+                }" />
+            </p:column>
+        </p:dataTable>
+        </p:outputPanel>
+        <p:commandButton value="#{languageBean.isPolish() ? 'Zmień hasło' : 'Change password'}"
+                         action="#{securityBean.redirectPassword()}" id="password"/>
+        <p:commandButton value="#{languageBean.isPolish() ? 'Wyloguj się' : 'Logout'}" action="#{securityBean.logout()}" id="logout"/>
+
+    </ui:fragment>
+    <ui:include src="language.xhtml"/>
+
+
+
+
+</h:body>
+</html>

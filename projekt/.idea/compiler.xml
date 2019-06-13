@@ -7,11 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="resteasy" />
+        <module name="parking-place-mock" />
+        <module name="parking-area-service" />
+        <module name="parking-meter-mock" />
+        <module name="mobile-device-notifier-mock" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="resteasy" target="1.5" />
+      <module name="mobile-device-notifier-mock" target="1.5" />
+      <module name="parking-area-service" target="1.8" />
+      <module name="parking-meter-mock" target="1.5" />
+      <module name="parking-place-mock" target="1.5" />
+      <module name="projekt" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

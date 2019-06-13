@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="parking-meter-mock:war">
+    <output-path>$PROJECT_DIR$/parking-meter-mock/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>parking-meter-mock</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="parking-meter-mock.war">
+      <element id="artifact" artifact-name="parking-meter-mock:war exploded" />
+    </root>
+  </artifact>
+</component>
